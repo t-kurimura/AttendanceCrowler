@@ -14,14 +14,6 @@ chrome:
   volumes:
     - /dev/shm:/dev/shm
 
-#firefox:
-#  image: selenium/node-firefox-debug
-#  container_name: 'firefox'
-#  ports:
-#   - 5910:5900
-#  links:
-#    - selenium-hub:hub
-
 python:
   build: './python-selenium'
   container_name: 'python'
@@ -30,6 +22,12 @@ python:
   command: 'tail -f /dev/null'
   working_dir: '/root/script/'
   volumes:
-    - ./script/:/root/script/
+    - /home/takahisa.kurimura/selenium/script:/root/script/
   environment:
     - 'TZ=Asia/Tokyo'
+    - 'HOST='
+    - 'CLIENT_ID='
+    - 'EMAIL='
+    - 'PASSWORD='
+    - 'SLACK_TOKEN='
+    - 'SLACK_CHANNEL='
